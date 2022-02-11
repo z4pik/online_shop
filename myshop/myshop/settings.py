@@ -124,8 +124,8 @@ CART_SESSION_ID = 'cart'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 993  # Порт SMPT
-EMAIL_HOST_USER = 'ts8217023.com'  # лог почты
-EMAIL_HOST_PASSWORD = 'ts8217023ts8217023'  # Пароль
+EMAIL_HOST_USER = ''  # лог почты
+EMAIL_HOST_PASSWORD = ''  # Пароль
 EMAIL_USE_TLS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
