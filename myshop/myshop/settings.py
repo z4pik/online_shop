@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from braintree import Configuration, Environment
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,8 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
+    'sendmail.apps.SendmailConfig',
 ]
 
 MIDDLEWARE = [
@@ -122,10 +125,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 993  # Порт SMPT
-EMAIL_HOST_USER = 'ts8217023.com'  # лог почты
-EMAIL_HOST_PASSWORD = 'ts8217023ts8217023'  # Пароль
-EMAIL_USE_TLS = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+BRAINTREE_MERCHANT_ID = 'qcc7ynq99mmyfmfr'  # Merchant ID
+BRAINTREE_PUBLIC_KEY = '6dr7ctr8wcvjg7f7'  # Public Key
+BRAINTREE_PRIVATE_KEY = '7ebc0b638e7536cc002731b02b9130b4'  # Private key
+
+
+BRAINTREE_CONF = Configuration(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'testshopaatestshopaa@gmail.com'
+EMAIL_HOST_PASSWORD = 'JJg7rzb9PxcjxqU'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
